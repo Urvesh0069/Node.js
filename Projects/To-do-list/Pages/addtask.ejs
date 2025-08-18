@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD TASK</title>
+    <!-- CSS -->
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #faf9f7;
+        margin: 0;
+        padding: 0;
+    }
+    h2 {
+        text-align: center;
+        margin: 20px 0;
+        color: #444;
+    }
+    form {
+        width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .inputfields, select {
+        width: 95%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1em;
+    }
+    div {
+        margin-bottom: 15px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #8c7b75;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #756660;
+    }
+    label {
+        font-weight: 500;
+        color: #555;
+    }
+</style>
+
+</head>
+
+<body>
+    <h2>ADD A TASK !</h2>
+    <!-- Form For Add Task -->
+    <form method="POST" action="/insertTask">
+        <div>
+            <label for="">TASK NO :</label>
+            <input type="number" name="taskid" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">TASK NAME :</label>
+            <input type="text" name="name" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DESCRIPTION :</label>
+            <input type="text" name="desc" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DATE : </label>
+            <input type="date" name="date" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="">DURATION : </label>
+            <input type="time" name="time" id="" class="inputfields">
+        </div>
+        <div>
+            <label for="efficient">EFFICIENT:</label><br>
+            <select name="efficient" id="efficient">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+
+</html>
