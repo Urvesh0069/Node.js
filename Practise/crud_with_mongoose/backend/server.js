@@ -1,20 +1,25 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import cors from 'cors'
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./src/database/db.js";
+import studentRoutes from "./src/routes/student.routes.js";
+import teacherRoutes from "./src/routes/teacher.routes.js";
+import cors from "cors";
 
-dotenv.config({
-    path: './.env'
-})
+dotenv.config();
 
-const app = express()
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-    origin: "*"
-}))
+app.use(cors());
+app.use(express.json());
 
-const port = process.env.PORT || 3169
+// Routes
+app.use("/api/students", studentRoutes);
+app.use("/api/teachers", teacherRoutes);
 
-
-app.listen(port, (err) => {
-    !err ? console.log(`server has been started in port ${port}`) : console.log("server not start!!");
-})
+// Start server
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+});
