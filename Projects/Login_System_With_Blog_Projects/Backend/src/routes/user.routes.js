@@ -10,15 +10,7 @@ router.get("/:id", getUserById)
 router.put("/:id", updateUser)
 router.delete("/:id", deleteUser)
 
-export default router;
-
-
-
-
-
-
-
-
+// export default router;
 
 // import express from 'express'
 // import { Router } from 'express'
@@ -32,4 +24,4 @@ export default router;
 // router.put("/:id" , updateStudent)
 // router.delete("/:id" , deleteStudent)
 
-// export default router
+export default router;
