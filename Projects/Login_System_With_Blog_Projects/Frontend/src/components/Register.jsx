@@ -1,18 +1,65 @@
+import React, { useState } from "react";
+import axios from "axios";
+
 const Register = ({ onClose, onSwitch }) => {
+
+  const API_URL = "http://localhost:5000/api/users/register";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  // handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("fg", formData);
+      console.log("Registered:", res.data);
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-transparent backdrop-blur-sm flex justify-center items-center">
       <div className="bg-white p-6 rounded-xl shadow-2xl w-[400px]">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log("Register clicked");
-          }}
-          className="flex flex-col space-y-4"
-        >
-          <input type="text" placeholder="Full Name" className="border p-2 rounded-md" />
-          <input type="email" placeholder="Email" className="border p-2 rounded-md" />
-          <input type="password" placeholder="Password" className="border p-2 rounded-md" />
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="border p-2 rounded-md"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="border p-2 rounded-md"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="border p-2 rounded-md"
+          />
           <button
             type="submit"
             className="bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900"
