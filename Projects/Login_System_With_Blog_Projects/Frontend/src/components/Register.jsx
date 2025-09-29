@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Register = ({ onClose, onSwitch }) => {
-
-  const API_URL = "http://localhost:5000/api/users/register";
+  // ✅ Correct endpoint
+  const API_URL = "http://localhost:6969/auth/register";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,10 +24,15 @@ const Register = ({ onClose, onSwitch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("fg", formData);
-      console.log("Registered:", res.data);
+      const res = await axios.post(API_URL, formData);
+      console.log("✅ Registered:", res.data);
+      alert("Registration successful!");
+      setFormData({ name: "", email: "", password: "" });
+
+      onSwitch(); // Switch to login after successful registration
+
     } catch (err) {
-      console.error(err.response?.data || err.message);
+      console.error("❌ Error:", err.response?.data || err.message);
     }
   };
 
@@ -70,12 +75,18 @@ const Register = ({ onClose, onSwitch }) => {
 
         <p className="mt-4 text-gray-600 text-sm">
           Already have an account?{" "}
-          <button onClick={onSwitch} className="text-gray-900 font-semibold hover:underline">
+          <button
+            onClick={onSwitch}
+            className="text-gray-900 font-semibold hover:underline"
+          >
             Login
           </button>
         </p>
 
-        <button onClick={onClose} className="mt-3 text-red-500 hover:underline text-sm">
+        <button
+          onClick={onClose}
+          className="mt-3 text-red-500 hover:underline text-sm"
+        >
           Close
         </button>
       </div>
