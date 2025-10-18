@@ -1,28 +1,34 @@
-import fetch from 'node-fetch'
-import dotenv from 'dotenv'
+// This file contains functions or classes that interact with external APIs.
 
-dotenv.config();
+const axios = require('axios');
 
-export const getDashboard = async() => {
-  const [weather , news , joke] = await Promise.all([
-    fetchWeather(),
-    fetchNews(),
-    fetchJoke()
-  ])
+const apiServices = {
+    fetchJokes: async () => {
+        try {
+            const response = await axios.get('https://api.example.com/jokes');
+            return response.data;
+        } catch (error) {
+            throw new Error('Error fetching jokes: ' + error.message);
+        }
+    },
 
-  return {weather , news , joke}
-}
+    fetchNews: async () => {
+        try {
+            const response = await axios.get('https://api.example.com/news');
+            return response.data;
+        } catch (error) {
+            throw new Error('Error fetching news: ' + error.message);
+        }
+    },
 
-const fetchWeather = async() => {
-  const  url = "https://api.openweathermap.org/data/2.5/weather?q=surat&appid=b4c426c91009e3429c4af53c61fd6e9c&units=metric"
-  
-}
+    fetchWeather: async (location) => {
+        try {
+            const response = await axios.get(`https://api.example.com/weather?location=${location}`);
+            return response.data;
+        } catch (error) {
+            throw new Error('Error fetching weather: ' + error.message);
+        }
+    }
+};
 
-const fetchNews = async() => {
-  const  url = "https://saurav.tech/NewsAPI/top-headlines/category/health/in.json"
-}
-
-const fetchJoke = async() => {
-  const  url = "https://official-joke-api.appspot.com/random_joke"
-}
-
+module.exports = apiServices;

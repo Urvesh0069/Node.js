@@ -1,9 +1,12 @@
+import React from 'react';
+import './App.css';
 
 function App() {
     return (
-        <>
-            <h1>API PROJECT</h1>
-        </>
+        <div className="App">
+            <h1>Welcome to the API of Project</h1>
+            <p>This is the main application component.</p>
+        </div>
     );
 }
 

@@ -1,16 +1,34 @@
-import mongoose from "mongoose";
+// This file defines the Weather model for the application.
 
-//Weather Schema 
+const mongoose = require('mongoose');
 
 const weatherSchema = new mongoose.Schema({
-    city: { type: String, required: true, },
-    country: { type: String },
-    temperature: { type: Number, required: true },
-    description: { type: String },
-    wind_speed: { type: Number },
-    humidity: { type: Number, required: true },
-})
+    location: {
+        type: String,
+        required: true
+    },
+    temperature: {
+        type: Number,
+        required: true
+    },
+    condition: {
+        type: String,
+        required: true
+    },
+    humidity: {
+        type: Number,
+        required: true
+    },
+    windSpeed: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});
 
-const Weather = mongoose.model("Weather", weatherSchema);
+const Weather = mongoose.model('Weather', weatherSchema);
 
-export default Weather;
+module.exports = Weather;

@@ -1,24 +1,20 @@
 {
-  "type": "module",
+  "name": "api-of-project-backend",
+  "version": "1.0.0",
+  "description": "Backend for the API of Project",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "body-parser": "^2.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "express-session": "^1.18.2",
-    "helmet": "^8.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.20.0",
-    "mongoose": "^8.19.1",
-    "morgan": "^1.10.1",
-    "node-fetch": "^3.3.2",
-    "nodemon": "^3.1.10",
-    "passport": "^0.7.0",
-    "passport-google-oauth20": "^2.0.0",
-    "passport-local": "^1.0.0"
-  }
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "author": "Urvesh",
+  "license": "ISC"
 }

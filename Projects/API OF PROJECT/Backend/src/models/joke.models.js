@@ -1,15 +1,20 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const jokeSchema = new mongoose.Schema({
-    category: { type: String },
-    author: { type: String },
-    joke: { type: String, required: true },
-    rating: {
-        likes: { type: Number, default: 0 },
-        dislikes: { type: Number, default: 0 }
+    setup: {
+        type: String,
+        required: true
+    },
+    punchline: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-})
+});
 
-const Joke = mongoose.model("Joke", jokeSchema);
+const Joke = mongoose.model('Joke', jokeSchema);
 
-export default Joke;
+module.exports = Joke;

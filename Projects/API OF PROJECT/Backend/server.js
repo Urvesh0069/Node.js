@@ -1,24 +1,26 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import { connectDB } from './src/database/db.js'
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-dotenv.config({
-  path:'./.env'
-})
+// Load environment variables from .env file
+dotenv.config();
 
-const app = express()
+// Middleware
+app.use(express.json());
 
-app.use(cors({
-  origin:'*'
-}))
+// Database connection
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
-app.use(express.json())
+// Routes (example placeholder)
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+});
 
-const PORT = process.env.PORT || 4000
-
-connectDB()
-
-app.listen(PORT , () => {
-  console.log(`server running on port ${PORT}`)
-})
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
