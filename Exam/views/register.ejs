@@ -1,0 +1,14 @@
+<% var body = `
+<h2>Register</h2>
+
+<form action="/api/auth/register" method="POST">
+  <input name="username" placeholder="Username" required>
+  <input name="email" placeholder="Email" required>
+  <input name="password" type="password" placeholder="Password" required>
+  <button>Register</button>
+</form>
+
+<a href="/login">Back to Login</a>
+` %>
+
+<%- include("layout.ejs", { title: "Register", body: body }) %>

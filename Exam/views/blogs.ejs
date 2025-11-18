@@ -1,0 +1,15 @@
+<%
+  var body = `
+    <h2>All Blogs</h2>
+
+    ${blogs.map(b => `
+      <div>
+        <h3>${b.title}</h3>
+        <p>${b.content}</p>
+        <p><strong>Author:</strong> ${b.user ? b.user.username : "Unknown"}</p>
+      </div>
+    `).join("")}
+  `;
+%>
+
+<%- include("layout.ejs", { title: "Blogs", body: body }) %>

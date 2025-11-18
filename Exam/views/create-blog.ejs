@@ -1,0 +1,14 @@
+<%- include("layout.ejs", { title: "Create Blog", body: `
+  <h2>Create New Blog</h2>
+  
+  <form action="/blogs/create" method="POST" style="max-width:400px">
+    
+    <label>Title</label>
+    <input type="text" name="title" required style="width:100%; margin-bottom:10px">
+
+    <label>Content</label>
+    <textarea name="content" required style="width:100%; height:120px; margin-bottom:10px"></textarea>
+
+    <button type="submit">Create Blog</button>
+  </form>
+`}) %>
